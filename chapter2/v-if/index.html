@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div v-if="ok">if条件による描画</div>
+      <div v-show="ok">show条件による表示</div>
+      <template v-if="ok" key="ok">
+        <header>v-if ok</header>
+        <div>コンテンツ</div>
+      </template>
+      <template v-else key="ok">
+        <header>v-else</header>
+        <div>コンテンツ</div>
+      </template>
+
+      <template v-if="state" key="state">
+        <header>v-if state</header>
+        <div>コンテンツ</div>
+      </template>
+      <template v-else key="state">
+        <header>v-else state</header>
+        <div>コンテンツ</div>
+      </template>
+
+      <pre>{{ $data }}</pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <script></script>
+  </body>
+</html>

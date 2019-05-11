@@ -1,0 +1,9 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+/* opacity:0から1へのフェードイン&フェードアウト */
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
