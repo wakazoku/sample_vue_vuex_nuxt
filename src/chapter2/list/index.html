@@ -9,23 +9,26 @@
   <body>
     <div id="app">
       <ul>
-        <li
-          v-for="(item, index) in list"
-          v-bind:key="item.id"
-          v-bind:class="{ tuyoi: item.hp > 300}"
-        >
+        <li v-for="(item, index) in list" v-bind:key="item.id" v-if="item.hp">
           ID.{{ item.id }} {{ item.name }} HP:{{ item.hp }}
-          <span v-if="item.hp > 300">強いぞ！</span>
+          <span v-if="item.hp < 50">瀕死</span>
+          <button v-on:click="doAttack(index)">攻撃する</button>
         </li>
       </ul>
       <input type="text" v-model="name" />
       <button v-on:click="doAdd">追加</button>
       <button v-on:click="doRemove(index)">削除</button>
 
+      <ul>
+        <li v-for="(item, index) in list_json" v-bind:key="item.id">
+          ID:{{ item.id }}, name:{{ item.name }}, HP:{{ item.hp }}
+        </li>
+      </ul>
+
       <pre>{{ $data }}</pre>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
-    <script></script>
   </body>
 </html>

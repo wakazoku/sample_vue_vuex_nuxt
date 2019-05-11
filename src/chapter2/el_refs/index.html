@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app">
+      <p ref="hello">Hello</p>
+      <p>
+        innterTextを使っていくらカウントアップしてもv-ifで切り替えを行うと0に戻る。<br />
+        DOMへの直接の変更は仮想DOMに対して影響を与えられない。
+      </p>
+
+      <button v-on:click="handleClick">カウントアップ</button>
+      <button v-on:click="show=!show">表示/非表示</button>
+      <span ref="count" v-if="show">0</span>
+      <pre>{{ $data }}</pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

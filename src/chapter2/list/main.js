@@ -3,6 +3,7 @@ var app = new Vue({
   el: "#app",
   data: {
     name: null,
+    list_json: [],
     list: [
       { id: 1, name: "スライム", hp: 100 },
       { id: 2, name: "ゴブリン", hp: 200 },
@@ -10,7 +11,23 @@ var app = new Vue({
     ]
   },
   created: function() {
-    this.list.forEach();
+    // リアクティブのlistにプロパティを後から追加する
+    this.list.forEach(function(item) {
+      this.$set(item, "active", false);
+    }, this);
+
+    // 外部からデータを取得する
+    axios
+      .get("list.json")
+      .then(
+        function(response) {
+          console.log(response.data);
+          this.list_json = response.data;
+        }.bind(this)
+      )
+      .catch(function(e) {
+        console.error(e);
+      });
   },
   methods: {
     doAdd: function() {
@@ -29,6 +46,9 @@ var app = new Vue({
     },
     doRemove: function(index) {
       this.list.splice(index, 1);
+    },
+    doAttack: function(index) {
+      this.list[index].hp -= 10;
     }
   }
 });
