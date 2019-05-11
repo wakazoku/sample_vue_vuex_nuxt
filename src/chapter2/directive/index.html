@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <div id="app">
+    <div id="app" v-cloak>
       <h2>v-pre</h2>
       <p>
         <a v-bind:href="$data.url" target="_blank">{{ message }}</a>
@@ -23,7 +23,13 @@
       <p>
         <a v-bind:href="$data.url" target="_blank">{{ message }}</a>
       </p>
-      <input type="text" v-model="message">
+      <input type="text" v-model="message" />
+
+      <h2>v-text</h2>
+      <p v-text="message"></p>
+
+      <h2>v-html</h2>
+      <p v-html="tag"></p>
 
       <pre>{{ $data }}</pre>
     </div>
