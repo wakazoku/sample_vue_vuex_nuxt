@@ -8,10 +8,55 @@
 
   <body>
     <div id="app" v-cloak>
-      <button @click="handleClick">クリック</button>
-      <button @click="count++">カウント</button>
-      <button @click="handleClick($event, count)">クリック2</button>
-      <pre>{{ $data }}</pre>
+      <div>
+        <button @click="handleClick(count)">クリック</button>
+      </div>
+
+      <div>
+        <p>{{ count }}</p>
+        <button @click="count++">カウント</button>
+      </div>
+
+      <div>
+        <button @click="handleClick">クリック2</button>
+      </div>
+
+      <div>
+        <img src="Vue.png" @load="show=true" :class="{hide: !show}" />
+      </div>
+
+      <div @dragstart="handler" draggable="">
+        <p>draggable</p>
+      </div>
+
+      <div @mousewheel="handler">
+        <p>mousewheel</p>
+      </div>
+
+      <div>
+        <p>
+          v-modelではなくv-onを使うことで入力内容を確認をしてからデータに代入したりとかもできる
+        </p>
+        <input type="text" :value="message" @input="handleInput" />
+      </div>
+
+      <div @click.right="handler">
+        <p>右ボタンのイベントを収集</p>
+      </div>
+
+      <div @click.right.prevent>
+        <p>右ボタンのイベントをpreventDefaultで阻止</p>
+      </div>
+
+      <div @click="handler('div1')">
+        <p>バブリングテスト</p>
+        <p>div1</p>
+        <div @click.stop="handler('div2')">div2</div>
+      </div>
+
+      <div>
+        <pre>{{ $data }}</pre>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

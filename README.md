@@ -11,7 +11,7 @@ npm install -g browser-sync
 ```
 
 ### ローカルサーバーを起動する
-src以下のファイルの更新を監視する。  
+src以下のファイルの更新を監視する。
 http://localhost:3000/src/cahpter{number}/{*}
 ```
 browser-sync start --server --files './src'
