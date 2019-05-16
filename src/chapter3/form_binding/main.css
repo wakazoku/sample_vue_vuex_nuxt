@@ -1,0 +1,23 @@
+[v-cloak] {
+  display: none;
+}
+
+@keyframes cloak-in {
+  0% {
+    opacity: 0;
+  }
+}
+
+div {
+  margin: 30px;
+  padding: 30px;
+  border: 1px solid gray;
+}
+
+#app {
+  animation: cloak-in 1s;
+}
+
+#app[v-cloak] {
+  opacity: 0;
+}

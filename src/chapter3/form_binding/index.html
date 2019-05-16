@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <div>
+        <pre>{{ message }}</pre>
+        <textarea v-model="message"></textarea>
+        <input type="text" v-model="message" />
+      </div>
+      <div>
+        <p>{{ checkbox }}</p>
+        <label><input type="checkbox" v-model="checkbox" value="A" />A</label>
+        <label><input type="checkbox" v-model="checkbox" value="B" />B</label>
+        <label><input type="checkbox" v-model="checkbox" value="C" />C</label>
+      </div>
+      <div>
+          <p>{{ radio }}</p>
+          <label><input type="radio" v-model="radio" value="A" />A</label>
+          <label><input type="radio" v-model="radio" value="B" />B</label>
+          <label><input type="radio" v-model="radio" value="C" />C</label>
+        </div>
+      <div>
+        <pre>{{ $data }}</pre>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
