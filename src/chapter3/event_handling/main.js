@@ -16,7 +16,11 @@ var app = new Vue({
     },
     handleInput: function(event) {
       // ここにバリデータとか色々前処理を入れたりもできる
-      this.message = event.target.value;
-    }
+      this.message = event.target.value + "!";
+    },
+    close: function(event) {
+      console.log(event);
+    },
+
   }
 });

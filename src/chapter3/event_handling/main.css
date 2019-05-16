@@ -30,3 +30,12 @@ img {
 img.hide {
   opacity: 0;
 }
+
+.overlay {
+  background: gray;
+}
+
+.main {
+  background: red;
+  padding: 20px;
+}

@@ -37,6 +37,7 @@
         <p>
           v-modelではなくv-onを使うことで入力内容を確認をしてからデータに代入したりとかもできる
         </p>
+        <p>{{ message }}</p>
         <input type="text" :value="message" @input="handleInput" />
       </div>
 
@@ -52,6 +53,34 @@
         <p>バブリングテスト</p>
         <p>div1</p>
         <div @click.stop="handler('div2')">div2</div>
+      </div>
+
+      <div @click.capture="handler('div1')">
+        <p>キャプチャテスト</p>
+        div1
+        <div @click="handler('div2')">
+          div2
+          <div @click="handler('div3')">
+            div3
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay" @click.self="close">
+        <div class="main">
+          <p>
+            selfテスト <br />
+            .selfはevent.targetが自分自身の時だけハンドラが反応します <br />
+            モーダルウィンドウの背景部分をクリックしたら消える、みたいな感じで使うのがよい
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <p>
+          他にも.passiveとかある <br />
+          .preventを明示的に防ぐ意味がある
+        </p>
       </div>
 
       <div>
