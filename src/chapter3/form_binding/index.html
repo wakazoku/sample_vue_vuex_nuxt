@@ -8,6 +8,9 @@
 
   <body>
     <div id="app" v-cloak>
+      <header :class="{compact: scrollY > 200}">
+        200pxより下にスクロールしたら .compactを付与
+      </header>
       <div>
         <pre>{{ message }}</pre>
         <textarea v-model="message"></textarea>
@@ -20,17 +23,31 @@
         <label><input type="checkbox" v-model="checkbox" value="C" />C</label>
       </div>
       <div>
-          <p>{{ radio }}</p>
-          <label><input type="radio" v-model="radio" value="A" />A</label>
-          <label><input type="radio" v-model="radio" value="B" />B</label>
-          <label><input type="radio" v-model="radio" value="C" />C</label>
+        <p>{{ radio }}</p>
+        <label><input type="radio" v-model="radio" value="A" />A</label>
+        <label><input type="radio" v-model="radio" value="B" />B</label>
+        <label><input type="radio" v-model="radio" value="C" />C</label>
+      </div>
+      <div>
+        <input type="file" @change="handleChange" />
+        <div v-if="preview">
+          <img :src="preview" width="50%" height="50%" />
         </div>
+      </div>
+      <div>
+        <p>{{ range }}</p>
+        <input type="range" v-model.number="range" />
+      </div>
+      <div @click="scrollTop">
+        ページ上部へ移動
+      </div>
       <div>
         <pre>{{ $data }}</pre>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5"></script>
     <script src="main.js"></script>
   </body>
 </html>
