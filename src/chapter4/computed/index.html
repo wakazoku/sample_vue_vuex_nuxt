@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <div>
+        <p>{{ width }}の半分は{{ halfWidth }}</p>
+      </div>
+      <div>
+        <p>X: {{ halfPoint.x }}</p>
+        <p>Y: {{ halfPoint.y }}</p>
+      </div>
+      <div>
+        <p>width: <input type="text" v-model.number="width" />{{ width }}</p>
+        <p>
+          halfWidth: <input type="text" v-model.number="halfWidth" />
+          {{ halfWidth }}
+        </p>
+      </div>
+      <div>
+        <p>算出プロパティ</p>
+        <ol>
+          <li>{{ coumputedData }}</li>
+          <li>{{ coumputedData }}</li>
+        </ol>
+
+        <p>メソッド</p>
+        <ol>
+          <li>{{ methodData() }}</li>
+          <li>{{ methodData() }}</li>
+        </ol>
+      </div>
+      <div>
+        <p><input type="text" v-model.number="budget" />円以下に絞り込む</p>
+        <p><input type="text" v-model.number="limit" />件を表示</p>
+        <p>{{ matched.length }}件中{{ limited.length }}件を表示中</p>
+        <ul>
+          <li v-for="item in limited" :key="item.id">
+            {{ item.name }} {{ item.price }}円
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <pre>{{ $data }}</pre>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
