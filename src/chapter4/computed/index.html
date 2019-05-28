@@ -38,7 +38,8 @@
       <div>
         <p><input type="text" v-model.number="budget" />円以下に絞り込む</p>
         <p><input type="text" v-model.number="limit" />件を表示</p>
-        <p>{{ matched.length }}件中{{ limited.length }}件を表示中</p>
+        <p><button @click="order=!order">切り替え</button></p>
+        <p>{{ matched.length }}件中{{ filterdList.length }}件を表示中</p>
         <ul>
           <li v-for="item in limited" :key="item.id">
             {{ item.name }} {{ item.price }}円
@@ -52,6 +53,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

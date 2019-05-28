@@ -12,7 +12,8 @@ var app = new Vue({
       { id: 3, name: "いちご", price: 400 },
       { id: 4, name: "おれんじ", price: 300 },
       { id: 5, name: "めろん", price: 500 }
-    ]
+    ],
+    order: false
   },
   computed: {
     // 算出プロパティhalfwidthを定義
@@ -43,7 +44,13 @@ var app = new Vue({
       }, this);
     },
     limited: function() {
-      return this.matched.slice(0, this.limit);
+      return this.sorted.slice(0, this.limit);
+    },
+    filterdList: function() {
+      return this.limited;
+    },
+    sorted: function() {
+      return _.orderBy(this.matched, "price", this.order ? "desc" : "asc");
     }
   },
   created: function() {
