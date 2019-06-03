@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <div>
+        <p>
+          <input
+            type="text"
+            v-focus
+          />v-focusが付与されているので読み込み時にフォーカスされる
+        </p>
+        <p><input type="text" />こちらは普通のinput</p>
+        <p><input type="text" v-example v-model="message" />こみこみ</p>
+      </div>
+      <div>
+        <pre>{{ $data }}</pre>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
