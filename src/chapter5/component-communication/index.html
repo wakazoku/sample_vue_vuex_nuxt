@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div>
+        <!-- <comp-child val="これは子A"></comp-child> -->
+        <!-- <comp-child v-bind:val="message" class="item"></comp-child> -->
+        <!-- <comp-child id="parent" class="parent"></comp-child> -->
+        <!-- <ul>
+          <comp-child
+            v-for="item in list"
+            v-bind:key="item.id"
+            v-bind:name="item.name"
+            v-bind:hp="item.hp"
+          ></comp-child>
+        </ul> -->
+        <!-- <example
+          prop-A="13"
+          prop-B="propB"
+          prop-C="propC"
+          prop-D="12"
+          prop-E=""
+          prop-F="1"
+        ></example> -->
+      </div>
+      <div>
+        {{ $data }}
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
