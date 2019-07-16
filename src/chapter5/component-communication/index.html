@@ -28,6 +28,16 @@
           prop-E=""
           prop-F="1"
         ></example> -->
+        <!-- <comp-child v-on:childs-event="parentMethod"></comp-child> -->
+        <ul>
+          <comp-child
+            v-for="item in list"
+            v-bind:key="item.id"
+            v-bind="item"
+            v-on:attack="handleAttack"
+          >
+          </comp-child>
+        </ul>
       </div>
       <div>
         {{ $data }}
