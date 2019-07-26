@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Todo</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app">
+      <form v-on:submit.prevent="sendTodo">
+        <input v-model="todo">
+        <input type="submit" val="追加">
+      </form>
+      <ul v-for="item in list">
+        <li v-on:click="doneTodo(item)">
+          <span>
+            status: {{ item.status }}
+          </span>
+          <s v-if="item.status == 'done'">
+            {{ item.text }}
+          </s>
+          <span v-else>
+            {{ item.text }}
+          </span>
+        </li>
+      </ul>
+      {{ todo }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
