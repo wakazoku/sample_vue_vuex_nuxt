@@ -1,18 +1,5 @@
-# このリポジトリは
-体系的に Vue 周りを勉強したいので以下の本を写経したりします  
-https://cr-vue.mio3io.com/
-
-## Browsersync を使う
-https://www.browsersync.io/
-
-### グローバルインストールする
+以下の本を参考に色々学ぶ
 ```
-npm install -g browser-sync
-```
-
-### ローカルサーバーを起動する
-src以下のファイルの更新を監視する。
-http://localhost:3000/src/cahpter{number}/{*}
-```
-browser-sync start --server --files './src'
+Vue.js&Nuxt.js超入門
+https://www.shuwasystem.co.jp/book/9784798056593.html
 ```
