@@ -9,11 +9,15 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { Route } from 'vue-router'
+
+type params = {
+  id: String
+  pass: String
+}
 
 @Component
 export default class Pass extends Vue {
-  validate({ params }) {
+  validate({ params }: { params: params }) {
     if (params.id === undefined || params.pass === undefined) {
       return false
     } else {
@@ -22,7 +26,6 @@ export default class Pass extends Vue {
   }
 
   title = 'Login'
-  $route: Route
 
   get message() {
     const id =
