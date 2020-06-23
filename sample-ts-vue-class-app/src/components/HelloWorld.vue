@@ -1,42 +1,62 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <h1>{{ title }}</h1>
+    <pre @click="clear">{{ message }}</pre>
+    <hr />
+    <div id="out" class="out" @click="aEvent">
+      A
+      <div id="mid" class="mid" @click.self="bEvent">
+        B
+        <div id="in" class="in" @click="cEvent">C</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+  @Prop({ default: "title" })
+  title!: string;
+
+  message = "message";
+
+  aEvent(event: Event): void {
+    console.log(event);
+    if (
+      event.target instanceof HTMLElement &&
+      event.currentTarget instanceof HTMLElement
+    ) {
+      this.message += `A-Event [ ${event.target.id} → ${event.currentTarget.id} ]\n`;
+    }
+  }
+
+  bEvent(event: Event): void {
+    console.log(event);
+    if (
+      event.target instanceof HTMLElement &&
+      event.currentTarget instanceof HTMLElement
+    ) {
+      this.message += `B-Event [ ${event.target.id} → ${event.currentTarget.id} ]\n`;
+    }
+  }
+
+  cEvent(event: Event): void {
+    console.log(event);
+
+    if (
+      event.target instanceof HTMLElement &&
+      event.currentTarget instanceof HTMLElement
+    ) {
+      this.message += `C-Event [ ${event.target.id} → ${event.currentTarget.id} ]\n`;
+    }
+  }
+
+  clear(): void {
+    this.message = "";
+  }
 }
 </script>
 
@@ -55,5 +75,23 @@ li {
 }
 a {
   color: #42b983;
+}
+div.out {
+  padding: 5px 0;
+  background-color: #eee;
+  width: 300px;
+  height: 200px;
+}
+div.mid {
+  padding: 5px 0;
+  background-color: #ddd;
+  width: 200px;
+  height: 175px;
+}
+div.in {
+  padding: 5px 0;
+  background-color: #ccc;
+  width: 100px;
+  height: 150px;
 }
 </style>
