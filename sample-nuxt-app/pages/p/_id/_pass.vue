@@ -13,6 +13,14 @@ import { Route } from 'vue-router'
 
 @Component
 export default class Pass extends Vue {
+  validate({ params }) {
+    if (params.id === undefined || params.pass === undefined) {
+      return false
+    } else {
+      return true
+    }
+  }
+
   title = 'Login'
   $route: Route
 
@@ -27,7 +35,7 @@ export default class Pass extends Vue {
         ? this.$route.params.pass
         : '*** no pass ***'
 
-    return `ID:${id} <br> pass:${pass} `
+    return `ID: ${id} <br> PASSWORD: ${pass} `
   }
 }
 </script>
