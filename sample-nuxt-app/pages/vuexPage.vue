@@ -1,15 +1,15 @@
 <template>
   <section class="container">
     <h1>{{ title }}</h1>
-    <p>{{ $store.state.message }}</p>
+    <p>{{ $store.state.count.message }}</p>
     <hr />
     <div
       class="link"
-      @click.exact="$store.dispatch('doIt')"
-      @click.alt="$store.commit({ type: 'count', message: 'add3', add: 3 })"
-      @click.shift="$store.commit('reset')"
+      @click.exact="$store.dispatch('count/doIt')"
+      @click.alt="$store.commit('count/count', 3)"
+      @click.shift="$store.commit('count/reset')"
     >
-      <a> clicked: {{ $store.state.counter }} </a>
+      <a> clicked: {{ $store.state.count.counter }} </a>
     </div>
     <router-link to="/other">Go to Other</router-link>
   </section>
