@@ -1,19 +1,30 @@
-import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 
 @Module
 export default class Index extends VuexModule {
-  message = 'count number'
-  counter = 0
+  message: string = 'count number'
+  counter: number = 0
 
   @Mutation
-  count(obj: { message: string; add: number }): void {
-    this.message = obj.message
-    this.counter += obj.add
+  count(add: number): void {
+    this.counter += add
+  }
+
+  @Mutation
+  say(msg: string) {
+    this.message = msg
   }
 
   @Mutation
   reset(): void {
     this.message = 'reset value'
     this.counter = 0
+  }
+
+  @Action
+  doIt(): void {
+    const number: number = Math.floor(Math.random() * 10)
+    this.context.commit('count', number)
+    this.context.commit('say', `say ${number} !`)
   }
 }

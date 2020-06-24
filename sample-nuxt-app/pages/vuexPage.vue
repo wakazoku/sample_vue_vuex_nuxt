@@ -5,7 +5,7 @@
     <hr />
     <div
       class="link"
-      @click.exact="$store.commit({ type: 'count', message: 'add1', add: 1 })"
+      @click.exact="$store.dispatch('doIt')"
       @click.alt="$store.commit({ type: 'count', message: 'add3', add: 3 })"
       @click.shift="$store.commit('reset')"
     >
