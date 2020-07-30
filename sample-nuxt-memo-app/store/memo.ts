@@ -13,6 +13,7 @@ export default class Memo extends VuexModule {
       date.getMonth() + 1
     } - ${date.getDate()} ${date.getHours()} : ${date.getMinutes()}`
     state.memo.unshift({
+      id: this.counter++,
       title: article.title,
       content: article.content,
       created: format,
@@ -28,21 +29,11 @@ export default class Memo extends VuexModule {
   REMOVE(state: state, article: article): void {
     for (let i = 0; i < state.memo.length; i++) {
       const ob = state.memo[i]
-      if (
-        ob.title === article.title &&
-        ob.content === article.content &&
-        ob.created === article.created
-      ) {
+      if (ob.id === article.id) {
         alert(`remove it! -- ${ob.title}`)
         state.memo.splice(i, 1)
         return
       }
     }
   }
-
-  // @Mutation
-  // reset(state: state): void {
-  //   state.counter = 0
-  //   state.message = 'reset now .'
-  // }
 }
